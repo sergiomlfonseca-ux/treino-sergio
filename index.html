@@ -93,8 +93,8 @@
                 video: "peck deck machine",
                 alt: "A: Crucifixo com Halteres | B: Press de Peito Máquina"
               },
-              { id: "up4", name: "Tríceps à Testa", reps: "10", setCount: 3, rest: 60, equipment: "Barra W", video: "skullcrusher ez bar", alt: "Tríceps Polia (Corda) ou Francês" },
-              { id: "up5", name: "Bíceps Martelo", reps: "10", setCount: 3, rest: 60, equipment: "Halteres", video: "hammer curl", alt: "Bíceps Barra W ou Polia Baixa" }
+              { id: "up4", name: "Tríceps à Testa", reps: "10", setCount: 3, rest: 60, tips: "Carga Considerável para as 3 séries", equipment: "Barra W", video: "skullcrusher ez bar", alt: "Tríceps Polia (Corda) ou Francês" },
+              { id: "up5", name: "Bíceps Martelo", reps: "10", setCount: 3, rest: 60, tips: "Carga Considerável para as 3 séries", equipment: "Halteres", video: "hammer curl", alt: "Bíceps Barra W ou Polia Baixa" }
             ]
           }
         };
@@ -192,8 +192,8 @@
                   <div className="mt-3 space-y-2">
                     {exercise.subExercises.map((sub, idx) => (
                         <div key={idx} className="bg-slate-900/50 p-2 rounded border border-slate-700/50">
-                            <p className="text-slate-200 text-sm font-semibold">{sub.name} • {sub.equipment}</p>
-                            <p className="text-slate-500 text-xs mb-1">{sub.reps} • {sub.tips}</p>
+                            <p className="text-slate-200 text-sm font-semibold">{sub.name} </p>
+                            <p className="text-slate-500 text-xs mb-1">{sub.reps} • {sub.equipment} • {sub.tips}</p>
                             {/* Inputs de Carga para cada sub-exercício se expandido */}
                             {isExpanded && renderLoadInputs("-" + sub.idSuffix)}
                         </div>
@@ -223,8 +223,8 @@
               <div onClick={() => setIsExpanded(!isExpanded)} className="p-4 cursor-pointer">
                 <div className="flex justify-between items-start">
                     <div className="flex-1">
-                        <h3 className="font-bold text-white text-lg">{exercise.name} • {exercise.equipment}</h3>
-                        <p className="text-slate-400 text-sm">{exercise.reps} • {exercise.tips}</p>
+                        <h3 className="font-bold text-white text-lg">{exercise.name} </h3>
+                        <p className="text-slate-400 text-sm">{exercise.reps} • {exercise.equipment} • {exercise.tips}</p>
                     </div>
                     {isExpanded ? <Icons.ChevronUp className="text-slate-400" /> : <Icons.ChevronDown className="text-slate-400" />}
                 </div>
@@ -357,6 +357,7 @@
     </script>
 </body>
 </html>
+
 
 
 
