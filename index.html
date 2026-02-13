@@ -48,13 +48,13 @@
             color: "from-orange-500 to-red-600",
             icon: Icons.Flame,
             exercises: [
-              { id: "fb1", name: "Elíptica", reps: "5 Min", setCount: 1, rest: 0, equipment: "Máquina Eliptica", video: "technogym elliptical technique", alt: "Remo ou Passadeira" },
-              { id: "fb2", name: "Air Squat c/ Kettlebell", reps: "20", setCount: 2, rest: 0, equipment: "Kettlebell", video: "air squat kettlebell", alt: "Agachamento com Disco ou Halter" },
-              { id: "fb3", name: "Sit Ups", reps: "30", setCount: 2, rest: 0, equipment: "Colchão", video: "sit ups crossfit", alt: "Crunch em Máquina ou Prancha (45s)" },
-              { id: "fb4", name: "Lunge c/ Rotação", reps: "10+10", setCount: 2, rest: 0, equipment: "Haltere ou Kettlebell", video: "lunge with twist", alt: "Lunge estático sem peso" },
-              { id: "fb5", name: "Burpees c/ Push-up", reps: "12", setCount: 2, rest: 0, equipment: "Colchão", video: "burpee push up", alt: "Sprawls (Burpee sem flexão) ou Mountain Climbers" },
-              { id: "fb6", name: "Plank Jack", reps: "20", setCount: 2, rest: 0, equipment: "Colchão", video: "plank jack exercise", alt: "Jumping Jacks (30 reps)" },
-              { id: "fb7", name: "Elíptica (Fim da Volta)", reps: "5 Min", setCount: 2, rest: 120, equipment: "Máquina Eliptica", video: "elliptical cool down", alt: "Caminhada Inclinada" }
+              { id: "fb1", name: "Elíptica", reps: "5 Min", setCount: 1, rest: 0, tips: "Nível acima de 10", equipment: "Máquina Eliptica", video: "technogym elliptical technique", alt: "Remo ou Passadeira" },
+              { id: "fb2", name: "Air Squat c/ Kettlebell", reps: "20", setCount: 2, rest: 0, tips: "Carga Considerável", equipment: "Kettlebell", video: "air squat kettlebell", alt: "Agachamento com Disco ou Halter" },
+              { id: "fb3", name: "Sit Ups", reps: "30", setCount: 2, rest: 0, tips: " ", equipment: "Colchão", video: "sit ups crossfit", alt: "Crunch em Máquina ou Prancha (45s)" },
+              { id: "fb4", name: "Lunge c/ Rotação", reps: "10+10", setCount: 2, rest: 0, tips: "Repetir para cada lado", equipment: "Haltere ou Kettlebell", video: "lunge with twist", alt: "Lunge estático sem peso" },
+              { id: "fb5", name: "Burpees c/ Push-up", reps: "12", setCount: 2, rest: 0, tips: "Retirar push-up se fadiga", equipment: "Colchão", video: "burpee push up", alt: "Sprawls (Burpee sem flexão) ou Mountain Climbers" },
+              { id: "fb6", name: "Plank Jack", reps: "20", setCount: 2, rest: 0, tips: "O mais rápido possível", equipment: "Colchão", video: "plank jack exercise", alt: "Jumping Jacks (30 reps)" },
+              { id: "fb7", name: "Elíptica (Fim da Volta)", reps: "5 Min", setCount: 2, rest: 120, tips: "Nível acima de 10", equipment: "Máquina Eliptica", video: "elliptical cool down", alt: "Caminhada Inclinada" }
             ]
           },
           lower: {
@@ -65,7 +65,7 @@
             exercises: [
               { id: "leg1", name: "Agachamento Livre", reps: "15-12-12-10", setCount: 4, rest: 90, tips: "Carga ajustavel para progressão série após série", equipment: "Barra Olímpica", video: "barbell back squat", alt: "Agachamento Smith Machine ou Goblet Squat Pesado" },
               { id: "leg2", name: "Leg Press 45º", reps: "12", setCount: 3, rest: 60, tips: "Carga Considerável para as 3 séries", equipment: "Leg Press pesos livres", video: "leg press 45 technique", alt: "Hack Squat ou Leg Press Horizontal" },
-              { id: "leg3", name: "Bulgarian Split Squat", reps: "10/perna", setCount: 3, rest: 60, equipment: "Halteres + Banco", video: "bulgarian split squat", alt: "Afundos (Walking Lunges) ou Step Ups" },
+              { id: "leg3", name: "Bulgarian Split Squat", reps: "10/perna", setCount: 3, rest: 60, tips: "Carga Considerável para as 3 séries", equipment: "Halteres + Banco", video: "bulgarian split squat", alt: "Afundos (Walking Lunges) ou Step Ups" },
               { id: "leg4", name: "Leg Curl", reps: "15-12-12-10", setCount: 4, rest: 60, tips: "Carga ajustavel para progressão série após série", equipment: "Máquina Leg Curl", video: "leg curl machine", alt: "Cadeira Flexora ou Leg Curl com Bola Suiça" },
               { id: "leg5", name: "Leg Extension", reps: "15-12-12-12", setCount: 4, rest: 60, tips: "Carga ajustavel para progressão série após série", equipment: "Máquina Leg Extension", video: "leg extension machine", alt: "Agachamento Sissy ou com elástico" }
             ]
@@ -192,7 +192,7 @@
                   <div className="mt-3 space-y-2">
                     {exercise.subExercises.map((sub, idx) => (
                         <div key={idx} className="bg-slate-900/50 p-2 rounded border border-slate-700/50">
-                            <p className="text-slate-200 text-sm font-semibold">{sub.name}</p>
+                            <p className="text-slate-200 text-sm font-semibold">{sub.name} • {sub.equipment}</p>
                             <p className="text-slate-500 text-xs mb-1">{sub.reps} • {sub.tips}</p>
                             {/* Inputs de Carga para cada sub-exercício se expandido */}
                             {isExpanded && renderLoadInputs("-" + sub.idSuffix)}
@@ -223,8 +223,8 @@
               <div onClick={() => setIsExpanded(!isExpanded)} className="p-4 cursor-pointer">
                 <div className="flex justify-between items-start">
                     <div className="flex-1">
-                        <h3 className="font-bold text-white text-lg">{exercise.name}</h3>
-                        <p className="text-slate-400 text-sm">{exercise.reps} • {exercise.equipment}</p>
+                        <h3 className="font-bold text-white text-lg">{exercise.name} • {exercise.equipment}</h3>
+                        <p className="text-slate-400 text-sm">{exercise.reps} • {exercise.tips}</p>
                     </div>
                     {isExpanded ? <Icons.ChevronUp className="text-slate-400" /> : <Icons.ChevronDown className="text-slate-400" />}
                 </div>
@@ -357,6 +357,7 @@
     </script>
 </body>
 </html>
+
 
 
 
